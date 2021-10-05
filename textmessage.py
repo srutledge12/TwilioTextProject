@@ -49,7 +49,8 @@ for row in rows[:]:
 #     rowCount = rowCount + 1
 
 account_sid = 'AC6c5eacd663494ce1bbfb04ca09c5c5bf' #<get this from Twilio account>
-auth_token = '2c2ece142b0c6de3d9af9df0fafc2956' #<get this from Twilio account>
+# Removed token for privacy
+# auth_token = '' #<get this from Twilio account>
 client = Client(account_sid, auth_token)
 nameCount = 1
 # for number in numbers:

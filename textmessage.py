@@ -3,7 +3,7 @@ from twilio.rest import Client
 
 import csv
 
-filename = "rush_responses.csv"
+filename = "MassMsg2.csv"
 # initializing the titles and rows list
 fields = [] #Subjects on the spread sheet
 rows = [] #The rows
@@ -31,34 +31,38 @@ print('Field names are:' + ', '.join(field for field in fields))
 #rowCount = 0
 print('\nThe rows are:\n')
 for row in rows[:]:
-    print(row)
-    print('Name: ', row[1]) #The rushee name
-    first_name = row[1].split() #split the names so that only first name is attained
-    names.append(first_name[0])#[rowCount] = row[1]
-    print('Number: ', row[2]) #The rushee number
+#     print(row)
+    # print('Name: ', row[1]) #The rushee name
+#     first_name = row[1].split() #split the names so that only first name is attained
+#     names.append(first_name[0])#[rowCount] = row[1]
+    # print('Number: ', row[2]) #The rushee number
     numbers.append(row[2])#[rowCount] = row[2]
     #rowCount = rowCount + 1
-    print('\n')
+    # print('\n')
 
-#Print names and numbers
-rowCount = 0
-for nameNumber in names:
-    print('NUMBER: ' + str(rowCount))
-    print('Rushee Name: ' + names[rowCount])
-    print('Rushee Number: '+ numbers[rowCount])
-    rowCount = rowCount + 1
+# #Print names and numbers
+# rowCount = 0
+# for nameNumber in names:
+#     print('NUMBER: ' + str(rowCount))
+#     print('Rushee Name: ' + names[rowCount])
+#     print('Rushee Number: '+ numbers[rowCount])
+#     rowCount = rowCount + 1
 
 account_sid = 'AC6c5eacd663494ce1bbfb04ca09c5c5bf' #<get this from Twilio account>
-auth_token = 'e65e82a3bcf2e110f7b52778d43a849b' #<get this from Twilio account>
+auth_token = '2c2ece142b0c6de3d9af9df0fafc2956' #<get this from Twilio account>
 client = Client(account_sid, auth_token)
 nameCount = 1
-for number in numbers:
-    message = client.messages \
-                    .create(
-                        body="",
-                        from_= '+14052536450', #<Get this from twilio>,
-                        to = number
-                     )
-    nameCount = nameCount + 1
+# for number in numbers:
+# print(number)
+for x in range(1,292):
+    if len(numbers[x]) == 10:
+        print(numbers[x])
+        message = client.messages \
+                        .create(
+                            body="Rush event right now at Delts 6-8 at 400 Northwestern Ave. Tonight is basketball and lawn games.   \n \n Here’s our drivers \n 708-927-0351- Henry \n 765-438-6294- Evan",
+                            from_= '+14052536450', #<Get this from twilio>,
+                            to = numbers[x]
+                            )
+        nameCount = nameCount + 1
 
 print(message.sid)

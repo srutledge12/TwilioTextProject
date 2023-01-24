@@ -60,7 +60,7 @@ for x in range(1,292):
         print(numbers[x])
         message = client.messages \
                         .create(
-                            body="Rush event right now at Delts 6-8 at 400 Northwestern Ave. Tonight is basketball and lawn games.   \n \n Here’s our drivers \n 708-927-0351- Henry \n 765-438-6294- Evan",
+                            body="",
                             from_= '+14052536450', #<Get this from twilio>,
                             to = numbers[x]
                             )
